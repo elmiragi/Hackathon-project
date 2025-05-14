@@ -17,7 +17,7 @@
             </div>
             <nav class="sidebar-nav">
                 <ul>
-                    <li><a href="#" class="active"><i class="fas fa-folder"></i> 1 Папка-Питомцы и животные</a></li>
+                    <!-- <li><a href="#" class="active"><i class="fas fa-folder"></i> 1 Папка-Питомцы и животные</a></li> -->
                     <li><a href="#"><i class="fas fa-plus-circle"></i> Создать папку</a></li>
                     <li><a href="#"><i class="fas fa-edit"></i> Создать вопросы</a></li>
                     <li><a href="#"><i class="fas fa-clipboard-list"></i> Опросы</a></li>
@@ -46,7 +46,7 @@
                          </label>
                     </div>
                     <i class="fas fa-bell"></i>
-                    <img src="https://via.placeholder.com/40" alt="User Avatar" class="user-avatar">
+                    <img src="./img/Ellipse 198.png" alt="User Avatar" class="user-avatar">
                     <div class="user-details">
                         <span class="user-name">Ben verber</span>
                         <span class="user-role">Admin</span>
@@ -62,10 +62,35 @@
 
                 <div id="questions-list" class="questions-list">
                 </div>
+                <!-- <ol id="list">
+                <li id="question-template">
+                    <div id="question-container">
+                        <p>Вопрос</p>
+                        <p>Условие</p>
+                    </div>
+                    <div class="answer-block">
+                        <input id="input-answer" type="text" placeholder="Введите ответ" oninput="this.style.color = 'black'">
+                        <div id="result"></div>
+                    </div>
+                </li>
+                <hr>
+            </ol> -->
+            <div id="list"></div>
+    <button id="check-answer">Проверить ответы</button>
+    <div id="result"></div>
+
+    <template id="question-template">
+        <div class="question">
+            <h3 class="question-title"></h3>
+            <p class="question-description"></p>
+            <div class="answer-container"></div>
+        </div>
+    </template>
+
             </section>
         </main>
     </div>
 
-    <script src="main.js" defer></script>
+    <script src="script.js" defer></script>
 </body>
 </html>

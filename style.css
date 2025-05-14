@@ -377,3 +377,21 @@ body.light-theme {
     border-bottom-color: var(--border-color);
     color: var(--question-text-color);
 }
+
+#question-template{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.correct {
+    background-color: #d4edda;
+}
+.incorrect { 
+    background-color: #f8d7da; 
+}
+.question {
+    padding: 10px; 
+    margin: 10px 0; 
+    border: 1px solid #ddd; 
+}
