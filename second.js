@@ -4,50 +4,67 @@ document.addEventListener('DOMContentLoaded', function() {
     const submitBtn = document.getElementById('check-answer');
     const inputAnswer = document.getElementById('input-answer');
     const resultDiv = document.getElementById('result');
-    let questions = [
-        {
-            "id": 1,
-            "title": "Вопрос типа Да/Нет",
-            "description": "JavaScript и Java это одно и то же?",
-            "answer": "нет",
-            "type": "yesno"
-        },
-        {
-            "id": 2,
-            "title": "Вопрос с собственным ответом",
-            "description": "Как называется язык программирования, созданный Brendan Eich?",
-            "answer": "JavaScript",
-            "type": "text"
-        },
-        {
-            "id": 3,
-            "title": "Вопрос с одним вариантом",
-            "description": "Какой тег используется для подключения JavaScript?",
-            "answer": "script",
-            "variants": ["javascript", "script", "js", "scripting"],
-            "type": "radio"
-        },
-        {
-            "id": 4,
-            "title": "Вопрос с несколькими вариантами",
-            "description": "Какие из этих языков являются интерпретируемыми?",
-            "answer": ["JavaScript", "Python"],
-            "variants": ["JavaScript", "Python", "C++", "Java"],
-            "type": "checkbox"
-        }
-    ];
+    // let questions;
+    // [
+    //     {
+    //         "id": 1,
+    //         "title": "Вопрос типа Да/Нет",
+    //         "description": "Правда ли, что хамелеоны меняют цвет для маскировки?",
+    //         "answer": "нет",
+    //         "type": "yesno"
+    //     },
+    //     {
+    //         "id": 2,
+    //         "title": "Вопрос с собственным ответом",
+    //         "description": "Кто изобрел лампочку накаливания?",
+    //         "answer": "Эдисон",
+    //         "type": "text"
+    //     },
+    //     {
+    //         "id": 3,
+    //         "title": "Вопрос с одним вариантом",
+    //         "description": "Какой тег используется для подключения JavaScript?",
+    //         "answer": "script",
+    //         "variants": ["javascript", "script", "js", "scripting"],
+    //         "type": "radio"
+    //     },
+    //     {
+    //         "id": 4,
+    //         "title": "Вопрос с несколькими вариантами",
+    //         "description": "Какие из этих произведений написал Александр Пушкин?",
+    //         "answer": ["Руслан и Людмила", "Евгений Онегин"],
+    //         "variants": ["Евгений Онегин", "Война и мир", "Руслан и Людмила", "Преступление и наказание"],
+    //         "type": "checkbox"
+    //     }
+    // ];
 
+var questions = [];
 
     async function fetchQuestions() {
         try {
-            const response = await fetch('https://your-api-endpoint.com/questions');
+            const response = await fetch('http://rusland.h1n.ru/questions.php');  // https://your-api-endpoint.com/questions
             if (!response.ok) throw new Error('Ошибка загрузки вопросов');
             questions = await response.json();
+
+            renderQuestions();
+            
         } catch (error) {
             console.error('Error:', error);
             template.textContent = 'Не удалось загрузить вопросы.';
         }
     }
+
+    // async function fetchQuestions() {
+    //     try {
+    //         const response = await fetch('https://team-3.internship.api.visiflow-ai.ru/questions');
+    //         if (!response.ok) throw new Error('Ошибка загрузки вопросов');
+    //         questions = await response.json().questions;
+    //         renderQuestions();
+    //     } catch (error) {
+    //         console.error('Error:', error);
+    //         template.textContent = 'Не удалось загрузить вопросы.';
+    //     }
+    // }
 
     function renderQuestions() {
         list.innerHTML = ''; 
@@ -63,10 +80,24 @@ document.addEventListener('DOMContentLoaded', function() {
             answerContainer.innerHTML = ''; 
             
             switch(q.type) {
-                case 'yesno':
+                // case 'yesno':
+                //     answerContainer.innerHTML = `
+                //         <button><input type="radio" name="answer-${q.id}" value="да"> Да</button>
+                //         <button><input type="radio" name="answer-${q.id}" value="нет"> Нет</button>
+                //     `;
+                //     break;
+                                case 'yesno':
                     answerContainer.innerHTML = `
-                        <label><input type="radio" name="answer-${q.id}" value="да"> Да</label>
-                        <label><input type="radio" name="answer-${q.id}" value="нет"> Нет</label>
+                        <div class="button-radio-group">
+                        <label class="button-radio">
+                            <input type="radio" name="answer-${q.id}" value="да" hidden>
+                            <span>Да</span>
+                        </label>
+                        <label class="button-radio">
+                            <input type="radio" name="answer-${q.id}" value="нет" hidden>
+                            <span>Нет</span>
+                        </label>
+                        </div>
                     `;
                     break;
                     
@@ -170,7 +201,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     fetchQuestions();
-    renderQuestions();
+    
     submitBtn.addEventListener('click', checkAnswers);
 });
 //     function checkAnswers() {

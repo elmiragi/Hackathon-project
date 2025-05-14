@@ -1,62 +1,77 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <title>Document</title>
+    <title>bHUNTERS - Опрос</title>
+    <link rel="stylesheet" href="second.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
 
+                <header class="header">
+                    <div class="logo">
+                        <img src="./img/Group 33299.png" alt="">
+                        <p>bHUNTERS</p>
+                    </div>
+                <div class="search-box">
+                    <img src="./img/Vector.png">
+                    <input type="text" placeholder="Поиск...">
+                </div>
+                <div class="user-info">
+                    <div class="theme-toggle">
 
-    <main>
-        <section id="start" class="block-main">
-            <!-- <section class="sideblock">
-                <button class="menublock">Результат</button>
-                <button class="menublock">Опрос</button>
-                <button class="menublock">Аккаунт</button>
-            </section> -->
-        </section>
-
-        <section class="second-block">
-             <div class="header">
-                    <input class="search" type="text" placeholder="Поиск...">
-                <div class="profile">
-                    <img class="call" src="./img/Icon.png">
-                    <div>
-                        <img class="avatar" src="./img/Ellipse 198.png">
-                        <div>
-                            <h3>Ben Verber</h3>
-                            <p>Admin</p>
-                        </div>
-                        
+                         <label for="theme-switch" class="theme-switch__label">
+                              <span></span>
+                         </label>
+                    </div>
+                    <i class="fas fa-bell"></i>
+                    <img src="./img/Ellipse 198.png" alt="User Avatar" class="user-avatar">
+                    <div class="user-details">
+                        <span class="user-name">Ben verber</span>
+                        <span class="user-role">Admin</span>
                     </div>
                 </div>
-            </div>
-            <div class="top-block">
-                <h1>«Однозначный интеллект»</h1>
-                <div>
-                <p id="result"></p>&nbsp;<p>/13</p>
+            </header>      
+
+        
+        
+            <main class="main-content">
+                <!-- <div type="button" class="email-bt" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
+    <div class="text-call">
+        <i class="fa fa-envelope" aria-hidden="true">↑</i>
+        <span>Вверх</span>
+    </div>
+</div> -->
+
+
+            <section class="quiz-section">
+                <div class="quiz-header-main">
+                    <h1 class="quiz-title">«Однозначный интеллект»</h1>
+                    <span class="quiz-progress">0/13</span>
                 </div>
-            </div>
-            <ol id="list">
-                <li id="question-template">
-                    <div id="question-container">
-                        <p>Вопрос</p>
-                        <p>Условие</p>
-                    </div>
-                    <div class="answer-block">
-                        <input id="input-answer" type="text" placeholder="Введите ответ" oninput="this.style.color = 'black'">
-                        
-                        <div id="result"></div>
-                    </div>
-                </li>
-                <hr>
-                <li></li>
-            </ol>
-            <button class="enterButton" id="check-answer" onclick="checkAnswer(this)">Проверить ответ</button>
-        </section>
-    </main>
-    <script src="./script.js"></script>
+
+                <div id="questions-list" class="questions-list">
+                </div>
+            
+            <div id="list"></div>
+    <div id="result"></div>
+
+    <template id="question-template">
+        <div class="question">
+            <h3 class="question-title"></h3>
+            <p class="question-description"></p>
+            <div class="answer-container"></div>
+        </div>
+    </template>
+    <div class="complete">
+        <div></div>
+        <button id="check-answer">Завершить</button>
+    </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="second.js" defer></script>
 </body>
 </html>
