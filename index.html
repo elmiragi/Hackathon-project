@@ -1,37 +1,71 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>bHUNTERS - Опрос</title>
     <link rel="stylesheet" href="style.css">
-    <script src="./script.js"></script>
-    <title>Form</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
-    <form id="login">
-        <div>
-            <input type="email" class="input-text" placeholder="your@email.com">
-        </div>
-        <div>
-            <input type="text" class="input-text" placeholder="username">
-        </div>
-        <div>
-            <input type="password" class="input-text" placeholder="Password">
-        </div>
-        <button class="submit-btn">Sign&nbsp;in</button>
-    </form>
 
-    <form>
-        <div>
-            <input type="email" class="input-text" placeholder="your@email.com">
-        </div>
-        <div>
-            <input type="text" class="input-text" placeholder="Your username">
-        </div>
-        <div>
-            <input type="password" class="input-text" placeholder="Password">
-        </div>
-        <button class="submit-btn">Log&nbsp;in</button>
-    </form>
+    <div class="app-container">
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <span class="logo-icon"><i class="fas fa-brain"></i></span>
+                <span class="logo-text">bHUNTERS</span>
+            </div>
+            <nav class="sidebar-nav">
+                <ul>
+                    <li><a href="#" class="active"><i class="fas fa-folder"></i> 1 Папка-Питомцы и животные</a></li>
+                    <li><a href="#"><i class="fas fa-plus-circle"></i> Создать папку</a></li>
+                    <li><a href="#"><i class="fas fa-edit"></i> Создать вопросы</a></li>
+                    <li><a href="#"><i class="fas fa-clipboard-list"></i> Опросы</a></li>
+                    <li><a href="#"><i class="fas fa-chart-line"></i> Аналитика</a></li>
+                    <li><a href="#"><i class="fas fa-cogs"></i> Настройки</a></li>
+                    <li><a href="#"><i class="fas fa-question-circle"></i> О нас</a></li>
+                    <li><a href="#"><i class="fas fa-user"></i> Аккаунт</a></li>
+                </ul>
+            </nav>
+            <div class="sidebar-footer">
+                <i class="fas fa-arrow-left"></i>
+            </div>
+        </aside>
+
+        <main class="main-content">
+            <header class="header">
+                <div class="search-box">
+                    <i class="fas fa-search"></i>
+                    <input type="text" placeholder="Поиск...">
+                </div>
+                <div class="user-info">
+                    <div class="theme-toggle">
+                         <input type="checkbox" id="theme-switch" class="theme-switch__checkbox">
+                         <label for="theme-switch" class="theme-switch__label">
+                              <span></span>
+                         </label>
+                    </div>
+                    <i class="fas fa-bell"></i>
+                    <img src="https://via.placeholder.com/40" alt="User Avatar" class="user-avatar">
+                    <div class="user-details">
+                        <span class="user-name">Ben verber</span>
+                        <span class="user-role">Admin</span>
+                    </div>
+                </div>
+            </header>
+
+            <section class="quiz-section">
+                <div class="quiz-header-main">
+                    <h1 class="quiz-title">«Однозначный интеллект»</h1>
+                    <span class="quiz-progress">0/13</span>
+                </div>
+
+                <div id="questions-list" class="questions-list">
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="main.js" defer></script>
 </body>
 </html>
