@@ -4,10 +4,59 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <script src="./script.js"></script>
     <title>Document</title>
 </head>
 <body>
-    
+
+
+    <main>
+        <section id="start" class="block-main">
+            <!-- <section class="sideblock">
+                <button class="menublock">Результат</button>
+                <button class="menublock">Опрос</button>
+                <button class="menublock">Аккаунт</button>
+            </section> -->
+        </section>
+
+        <section class="second-block">
+             <div class="header">
+                    <input class="search" type="text" placeholder="Поиск...">
+                <div class="profile">
+                    <img class="call" src="./img/Icon.png">
+                    <div>
+                        <img class="avatar" src="./img/Ellipse 198.png">
+                        <div>
+                            <h3>Ben Verber</h3>
+                            <p>Admin</p>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+            <div class="top-block">
+                <h1>«Однозначный интеллект»</h1>
+                <div>
+                <p id="result"></p>&nbsp;<p>/13</p>
+                </div>
+            </div>
+            <ol id="list">
+                <li id="question-template">
+                    <div id="question-container">
+                        <p>Вопрос</p>
+                        <p>Условие</p>
+                    </div>
+                    <div class="answer-block">
+                        <input id="input-answer" type="text" placeholder="Введите ответ" oninput="this.style.color = 'black'">
+                        
+                        <div id="result"></div>
+                    </div>
+                </li>
+                <hr>
+                <li></li>
+            </ol>
+            <button class="enterButton" id="check-answer" onclick="checkAnswer(this)">Проверить ответ</button>
+        </section>
+    </main>
+    <script src="./script.js"></script>
 </body>
 </html>
