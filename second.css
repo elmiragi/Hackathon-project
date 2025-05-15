@@ -1,7 +1,7 @@
 @font-face {
   font-family: 'Terminator Cyr';
-  src: url('/fonts/TerminatorCyr.ttf') format('truetype'),
-       url('/fonts/TerminatorCyr.woff2') format('woff2');
+  src: url("terminatorcyr_semi_expandedbold.ttf") format('truetype'),
+       url('terminatorcyr_semi_expandedbold.ttf') format('woff2');
   font-weight: normal;
   font-style: normal;
   font-display: swap;
@@ -33,13 +33,27 @@ body {
 }
 
 .main-content {
+    display: flex;
+    justify-content: space-around;
+    flex-direction: row;
+
+
+}
+
+.all-blocks{
     flex-grow: 1;
     display: flex;
     flex-direction: column;
-    overflow-y: auto; 
-    
+    overflow-y: auto;
 }
 
+.exit{
+    padding: 31px 15px;
+}
+.exit img{
+    width: 25px;
+    height: 25px;
+}
 .central-block{
     display: flex;
     justify-content: center;
@@ -47,7 +61,7 @@ body {
 }
 
 main{
-    margin: 10px 200px;
+    margin: 0px 200px;
 
 }
 
@@ -132,7 +146,7 @@ main{
 .logo{
     display: flex;
     flex-direction: row;
-    
+    align-items: center;
 }
 
 .logo p{
@@ -237,76 +251,33 @@ main{
 }
 
 
-
-.email-bt {
-    background:rgba(49, 130, 206, 1);
-    border:2px solid #3182CE;
-    border-radius:50%;
-    box-shadow:0 8px 10px rgba(49, 130, 206,  0.3);
-    cursor:pointer;
-    height:38px;
-    text-align:center;
-    width:38px;
-    /* position: fixed; */
-    z-index:1000;
-    transition:.3s;
-    -webkit-animation:email-an linear 1s infinite;
-    animation:email-an linear 1s infinite;
-    position: fixed;
-    bottom: 40px;
-    right: 50px; 
+.span-logo {
+    font-size: 30px;
 }
 
-.email-bt .text-call{
-    height:38px;
-    width:38px;        
-    border-radius:20%;
-    position:static;
-    overflow:hidden;
+.question-block button{
+    display: inline-block;
+    padding: 12px 25px;
+    background: #252934;
+    border: 1px solid #737373;
+    border-radius: 4px;
+    cursor: pointer;
+    color: white;
 }
 
-.email-bt .text-call span {
-    text-align: center;
-    color:#3182CE;
-    opacity: 0;
-    font-size: 0;
-    position:absolute;
-    right: 5px;
-    top: 18px;
-    line-height: 1px;
-    font-weight: 600;
-    text-transform: uppercase;
-    transition: opacity .3s linear;
-    font-family: 'montserrat', Arial, Helvetica, sans-serif;
+.question-block button:hover{
+    background-color: var(--grey);
 }
 
-.email-bt .text-call:hover span {
-    opacity: 1;
-    font-size: 8px;
-}
-.email-bt:hover i {
-    display:none;   
-}
-
-.email-bt:hover {
-    z-index:1;
-    background:#fff;
-    transition:.3s;
-}
-.email-bt:hover i {
-    color:rgba(49, 130, 206, 1);
-    font-size:20px;
-    transition:.3s;
-}
-.email-bt i {
-    color:#fff;
-    font-size:19px;
-    font-style:normal;
-    transition:.3s;
-    line-height: 36px;
+.answer-field{
+    padding: 12px 25px;
+    background: #252934;
+    border: 1px solid #737373;
+    border-radius: 4px;
+    cursor: pointer;
+    color: white;
 }
 
-.email-bt i  {
-    -webkit-animation: opsimple 3s infinite;
-    animation: opsimple 3s infinite;
+.answer-field:focus{
+    background-color: var(--grey);
 }

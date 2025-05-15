@@ -37,14 +37,24 @@ document.addEventListener('DOMContentLoaded', function() {
     //         "type": "checkbox"
     //     }
     // ];
+// let user ={name:"tihon"}
+// fetch("link", {
+//     method: "POST",
+//     headers: {
+//         "Content-Type":"application/json",
+//     },
+//     body:JSON.stringify(user)
+// })
 
 var questions = [];
 
     async function fetchQuestions() {
         try {
-            const response = await fetch('http://rusland.h1n.ru/questions.php');  // https://your-api-endpoint.com/questions
+            const response = await fetch('https://team-3.internship.api.visiflow-ai.ru/questions');  // http://rusland.h1n.ru/questions.php
+            // const response = await fetch('http://rusland.h1n.ru/questions.php');
             if (!response.ok) throw new Error('Ошибка загрузки вопросов');
             questions = await response.json();
+            
 
             renderQuestions();
             
@@ -68,16 +78,29 @@ var questions = [];
 
     function renderQuestions() {
         list.innerHTML = ''; 
+        console.log(questions);
         
-        questions.forEach(q => {
+        
+        for(let q of questions.questions) {
+            // yn:0 text:1 radio:2 checkBox:3
             const clone = template.content.cloneNode(true);
-            const questionElement = clone.querySelector('.question');
+            // const questionElement = clone.querySelector('.question');
             
-            questionElement.querySelector('.question-title').textContent = q.title;
-            questionElement.querySelector('.question-description').textContent = q.description;
+            // questionElement.querySelector('.question-title').textContent = q.title;
+            // questionElement.querySelector('.question-description').textContent = q.description;
             
-            const answerContainer = questionElement.querySelector('.answer-container');
-            answerContainer.innerHTML = ''; 
+            // const answerContainer = questionElement.querySelector('.answer-container');
+            // answerContainer.innerHTML = ''; 
+            let qest = clone.children[0];
+            const questionElement = qest.children[0];
+            const answerContainer = qest.children[2];
+
+            questionElement.textContent = q.ask;
+
+            if (q.type >= 2){
+                q.variants = q.variantes.split();
+                if (q.type == 3) q.answer = q.answer
+            }
             
             switch(q.type) {
                 // case 'yesno':
@@ -86,7 +109,7 @@ var questions = [];
                 //         <button><input type="radio" name="answer-${q.id}" value="нет"> Нет</button>
                 //     `;
                 //     break;
-                                case 'yesno':
+                                case 0:
                     answerContainer.innerHTML = `
                         <div class="button-radio-group">
                         <label class="button-radio">
@@ -101,11 +124,11 @@ var questions = [];
                     `;
                     break;
                     
-                case 'text':
+                case 1:
                     answerContainer.innerHTML = `<input type="text" name="answer-${q.id}" placeholder="Введите ответ">`;
                     break;
                     
-                case 'radio':
+                case 2:
                     q.variants.forEach(variant => {
                         answerContainer.innerHTML += `
                             <label>
@@ -116,7 +139,10 @@ var questions = [];
                     });
                     break;
                     
-                case 'checkbox':
+                case 3:
+                    // console.log(q.variants);
+            
+                    
                     q.variants.forEach(variant => {
                         answerContainer.innerHTML += `
                             <label>
@@ -129,7 +155,7 @@ var questions = [];
             }
             
             list.appendChild(clone);
-        });
+        };
     }
 
     function checkAnswers() {

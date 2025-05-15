@@ -1,0 +1,152 @@
+@font-face {
+  font-family: 'Terminator Cyr';
+  src: url("terminatorcyr_semi_expandedbold.ttf") format('truetype'),
+       url('terminatorcyr_semi_expandedbold.ttf') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+
+
+:root {
+    --bg-color-dark: #242731;
+    --sidebar-bg-dark: #2a2d3a;
+    --header-bg-dark: #2a2d3a;
+    --text-color-dark: #e0e0e0;
+    --quiz-title-color-dark: #e0e0e0;
+    --black: #1B1E24;
+    --grey: #3E3E3E;
+    --main-grey: #272B36;
+    --logo-color-light: #5e72e4;
+    --blue:#14151A;
+    --grey-plate:#191C25;
+}
+
+body { 
+    font-family: sans-serif; 
+    margin: 0;
+    padding: 0;
+    background-color: var(--blue);
+    color: var(--text-color-dark);
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.header {
+    background-color: var(--blue);
+    padding: 15px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.search-box {
+    display: flex;
+    align-items: center;
+    background-color: var(--grey-plate);
+    border-radius: 9px;
+    padding: 8px 15px;
+    width: 600px;
+    border: 1px solid #3e3e3e;
+}
+
+.search-box img {
+    color: var(--text-color-light-dark);
+    margin-right: 10px;
+    width: 13px;
+    height: 13px;
+}
+
+.search-box input {
+    background: none;
+    border: none;
+    outline: none;
+    color: var(--search-text-dark);
+    font-size: 1em;
+    flex-shrink: 0;
+}
+
+.search-box input::placeholder {
+    color: var(--text-color-light-dark);
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+    color: var(--text-color-light-dark);
+}
+
+.user-info i {
+    margin-left: 20px;
+    cursor: pointer;
+}
+
+.user-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-left: 20px;
+    object-fit: cover;
+}
+
+.user-details {
+    display: flex;
+    flex-direction: column;
+    margin-left: 10px;
+    font-size: 0.9em;
+}
+
+.user-name {
+    font-weight: bold;
+    color: var(--text-color-dark);
+}
+
+.user-role {
+    color: var(--text-color-light-dark);
+}
+
+.large-letter{
+    font-size: 26px;
+}
+
+.logo{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.logo p{
+    font-family: 'Terminator Cyr', sans-serif;
+}
+
+.logo img{
+    width: 40px;
+    height: 40px;
+
+}
+
+.introduction-question{
+
+}
+
+.paragraph{
+
+}
+
+.exit{
+    padding: 31px 15px;
+}
+
+.exit img{
+    width: 25px;
+    height: 25px;
+}
+#check-answer{
+    background-color: #0040FF;
+    border: none;
+    color: white;
+    padding: 16px;
+    border-radius: 5px;
+    margin-bottom: 28px; 
+}
