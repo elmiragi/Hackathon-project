@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ru">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,6 +8,7 @@
     <link rel="stylesheet" href="second.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
+
 <body>
 
     <header class="header">
@@ -32,130 +34,89 @@
                 <span class="user-role">Admin</span>
             </div>
         </div>
-    </header>      
+    </header>
 
 
-        
-<main class="main-content">
-               
 
-        <div class="exit">
+    <main class="main-content">
+
+        <section class="congratulations hidden" id="end">
+            <h2><span>13</span>/15</h2>
+            <h3>Ты великолепен!</h3>
+            <a href="#">Домой</a>
+        </section>
+
+
+        <div class="exit" id="exit">
             <a href="./analog/cards.html">
                 <img src="./img/Frame 1073714444.png" alt="Вернуться на главную">
             </a>
         </div>
-   <section class="all-blocks"> 
-    <section class="quiz-section">
-        <div class="quiz-header-main">
-            <h1 class="quiz-title">«Однозначный интеллект»</h1>
-            <span class="quiz-progress">0/13</span>
-        </div>
+        <section class="all-blocks" id="blocks">
+            <section class="quiz-section">
+                <div class="quiz-header-main">
+                    <h1 class="quiz-title">«Однозначный интеллект»</h1>
+                    <span class="quiz-progress" id="counter">0/13</span>
+                </div>
 
-        <div id="questions-list" class="questions-list">
-        </div>
-            
-        <div id="list"></div>
-        <div id="result"></div>
+                <div id="questions-list" class="questions-list">
+                </div>
 
-        <!-- <template id="question-template">
+                <div id="list"></div>
+                <!-- <div id="result"></div> -->
+
+                <!-- <template id="question-template">
             <div class="question">
                 <h3 class="question-title"></h3>
                 <p class="question-description"></p>
                 <div class="answer-container"></div>
             </div>
         </template> -->
-        <section class="questions-list">
-            <div class="question-block">
-                <h2>Правда ли, что хамелеоны меняют цвет для маскировки?</h2>
-                <button>Да</button>
-                <button>Нет</button>
-            </div>
-            <div class="question-block">
-                <h2>Кто изобрел лампочку накаливания?</h2>
-                <input class="answer-field" placeholder="Введите ответ...">
-            </div>
-            <div class="question-block">
-                <h2>Какой тег используется для подключения JavaScript?</h2>
-               <div class="question-block">
-                 <div class="options-container">
-            <label class="option">
-                <input type="checkbox" name="quiz-option" value="script">
-                <span class="radiomark"></span>
-                script
-            </label>
-            <br>
-            <label class="option">
-                <input type="checkbox" name="quiz-option" value="javascript">
-                <span class="radiomark"></span>
-                javascript
-            </label>
-            <br>
-            <label class="option">
-                <input type="checkbox" name="quiz-option" value="js">
-                <span class="radiomark"></span>
-                js
-            </label>
-            <br>
-            <label class="option">
-                <input type="checkbox" name="quiz-option" value="scripting">
-                <span class="radiomark"></span>
-                scripting
-            </label>
-            <br>
-            <label class="option">
-                <input type="checkbox" name="quiz-option" value="Преступление и наказание">
-                <span class="radiomark"></span>
-                Преступление и наказание
-            </label>
-        </div>
+                <section class="questions-list" id="questions-list">
+                    <div class="question-block check" id="template-ny">
+                        <h2>Правда ли, что хамелеоны меняют цвет для маскировки?</h2>
+                        <button class="btn">Да</button>
+                        <button class="btn">Нет</button>
+                    </div>
+                    <div class="question-block check" id="template-input">
+                        <h2>Кто изобрел лампочку накаливания?</h2>
+                        <input class="answer-field" placeholder="Введите ответ...">
+                    </div>
+                    <div class="question-block check" id="template-checkBoxes">
+                        <h2>Какой тег используется для подключения JavaScript?</h2>
+                        <div class="question-block">
+                            <div class="options-container">
+                                <label class="option" id="template-checkBox">
+                                    <input type="checkbox" name="quiz-option" value="script">
+                                    <span class="radiomark"></span>
+                                    <p class="special-p"></p>
+                                </label>
+                            </div>
 
-            </div>
-            <div class="question-block">
-                <h2>Какие из этих произведений написал Александр Пушкин?</h2>
-                 <div class="options-container">
-            <label class="option">
-                <input type="radio" name="quiz-option" value="JavaScript">
-                <span class="radiomark"></span>
-                JavaScript
-            </label>
-            <br>
-            <label class="option">
-                <input type="radio" name="quiz-option" value="Руслан и Людмила">
-                <span class="radiomark"></span>
-                Руслан и Людмила
-            </label>
-            <br>
-            <label class="option">
-                <input type="radio" name="quiz-option" value="Война и мир">
-                <span class="radiomark"></span>
-                Война и мир
-            </label>
-            <br>
-            <label class="option">
-                <input type="radio" name="quiz-option" value="Евгений Онегин">
-                <span class="radiomark"></span>
-                Евгений Онегин
-            </label>
-            <br>
-            <label class="option">
-                <input type="radio" name="quiz-option" value="Преступление и наказание">
-                <span class="radiomark"></span>
-                Преступление и наказание
-            </label>
-        </div>
-            </div>
+                    </div>
+                    <div class="question-block check" id="template-radioBtnes">
+                        <h2>Какие из этих произведений написал Александр Пушкин?</h2>
+                        <div class="options-container">
+                            <label class="option" id="template-radioBtn">
+                                <input type="radio" name="quiz-option" value="JavaScript">
+                                <span class="radiomark"></span>
+                                <p class="special-p"></p>
+                            </label>
+                        </div>
+                    </div>
+                </section>
+                <div class="complete">
+                    <div></div>
+                    <button id="check-answer">Завершить</button>
+                </div>
+            </section>
         </section>
-        <div class="complete">
         <div></div>
-            <button id="check-answer">Завершить</button>
-        </div>
-    </section>
-    </section>
-    <div></div>
-    
-</main>
+
+    </main>
     </div>
 
     <script src="second.js" defer></script>
 </body>
+
 </html>

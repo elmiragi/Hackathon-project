@@ -1,267 +1,219 @@
-document.addEventListener('DOMContentLoaded', function() {
-    const template = document.getElementById('question-template');
-    const list = document.getElementById('list');
-    const submitBtn = document.getElementById('check-answer');
-    const inputAnswer = document.getElementById('input-answer');
-    const resultDiv = document.getElementById('result');
-    // let questions;
-    // [
-    //     {
-    //         "id": 1,
-    //         "title": "Вопрос типа Да/Нет",
-    //         "description": "Правда ли, что хамелеоны меняют цвет для маскировки?",
-    //         "answer": "нет",
-    //         "type": "yesno"
-    //     },
-    //     {
-    //         "id": 2,
-    //         "title": "Вопрос с собственным ответом",
-    //         "description": "Кто изобрел лампочку накаливания?",
-    //         "answer": "Эдисон",
-    //         "type": "text"
-    //     },
-    //     {
-    //         "id": 3,
-    //         "title": "Вопрос с одним вариантом",
-    //         "description": "Какой тег используется для подключения JavaScript?",
-    //         "answer": "script",
-    //         "variants": ["javascript", "script", "js", "scripting"],
-    //         "type": "radio"
-    //     },
-    //     {
-    //         "id": 4,
-    //         "title": "Вопрос с несколькими вариантами",
-    //         "description": "Какие из этих произведений написал Александр Пушкин?",
-    //         "answer": ["Руслан и Людмила", "Евгений Онегин"],
-    //         "variants": ["Евгений Онегин", "Война и мир", "Руслан и Людмила", "Преступление и наказание"],
-    //         "type": "checkbox"
-    //     }
-    // ];
-// let user ={name:"tihon"}
-// fetch("link", {
-//     method: "POST",
-//     headers: {
-//         "Content-Type":"application/json",
-//     },
-//     body:JSON.stringify(user)
-// })
+function $(id) {
+    return document.getElementById(id);
+}
 
-var questions = [];
 
-    async function fetchQuestions() {
-        try {
-            const response = await fetch('https://team-3.internship.api.visiflow-ai.ru/questions');  // http://rusland.h1n.ru/questions.php
-            // const response = await fetch('http://rusland.h1n.ru/questions.php');
-            if (!response.ok) throw new Error('Ошибка загрузки вопросов');
-            questions = await response.json();
-            
+const list = $("questions-list");
 
-            renderQuestions();
-            
-        } catch (error) {
-            console.error('Error:', error);
-            template.textContent = 'Не удалось загрузить вопросы.';
-        }
-    }
+const templates = {
+    ny: $("template-ny"),
+    input: $("template-input"),
+    radioBtnes: $("template-radioBtnes"),
+    checkBoxes: $("template-checkBoxes"),
+    radioBtn: $("template-radioBtn"),
+    checkBox: $("template-checkBox"),
+}
 
-    // async function fetchQuestions() {
-    //     try {
-    //         const response = await fetch('https://team-3.internship.api.visiflow-ai.ru/questions');
-    //         if (!response.ok) throw new Error('Ошибка загрузки вопросов');
-    //         questions = await response.json().questions;
-    //         renderQuestions();
-    //     } catch (error) {
-    //         console.error('Error:', error);
-    //         template.textContent = 'Не удалось загрузить вопросы.';
-    //     }
-    // }
+templates.ny.remove();
+templates.input.remove();
+templates.radioBtnes.remove();
+templates.checkBoxes.remove();
+templates.radioBtn.remove();
+templates.checkBox.remove();
 
-    function renderQuestions() {
-        list.innerHTML = ''; 
-        console.log(questions);
-        
-        
-        for(let q of questions.questions) {
-            // yn:0 text:1 radio:2 checkBox:3
-            const clone = template.content.cloneNode(true);
-            // const questionElement = clone.querySelector('.question');
-            
-            // questionElement.querySelector('.question-title').textContent = q.title;
-            // questionElement.querySelector('.question-description').textContent = q.description;
-            
-            // const answerContainer = questionElement.querySelector('.answer-container');
-            // answerContainer.innerHTML = ''; 
-            let qest = clone.children[0];
-            const questionElement = qest.children[0];
-            const answerContainer = qest.children[2];
+templates.ny.removeAttribute("id");
+templates.input.removeAttribute("id");
+templates.radioBtnes.removeAttribute("id");
+templates.checkBoxes.removeAttribute("id");
+templates.radioBtn.removeAttribute("id");
+templates.checkBox.removeAttribute("id");
 
-            questionElement.textContent = q.ask;
+// const results = [$("exit"), $("blocks")];
+const result = $("end");
 
-            if (q.type >= 2){
-                q.variants = q.variantes.split();
-                if (q.type == 3) q.answer = q.answer
-            }
-            
-            switch(q.type) {
-                // case 'yesno':
-                //     answerContainer.innerHTML = `
-                //         <button><input type="radio" name="answer-${q.id}" value="да"> Да</button>
-                //         <button><input type="radio" name="answer-${q.id}" value="нет"> Нет</button>
-                //     `;
-                //     break;
-                                case 0:
-                    answerContainer.innerHTML = `
-                        <div class="button-radio-group">
-                        <label class="button-radio">
-                            <input type="radio" name="answer-${q.id}" value="да" hidden>
-                            <span>Да</span>
-                        </label>
-                        <label class="button-radio">
-                            <input type="radio" name="answer-${q.id}" value="нет" hidden>
-                            <span>Нет</span>
-                        </label>
-                        </div>
-                    `;
+
+const host = "https";
+const domain = "team-3.internship.api.visiflow-ai.ru";
+
+
+fetch(`${host}://${domain}/questions`)
+    .then((response) => { return response.json() })
+    .then((data) => {
+
+
+        data.questions.forEach(question => {
+
+            // if (question.type != 0) return;
+
+            let clone, variants;
+
+            switch (question.type) {
+                case 0:
+
+
+                    clone = templates.ny.cloneNode(true);
+                    clone.answer = question.answer.toLowerCase();
+
+                    clone.children[1].onclick = () => {
+                        clone.children[1].disabled = true;
+                        clone.children[2].disabled = false;
+                        clone.data = "да";
+                    }
+
+                    clone.children[2].onclick = () => {
+                        clone.children[2].disabled = true;
+                        clone.children[1].disabled = false;
+                        clone.data = "нет";
+                    }
+
+
                     break;
-                    
+
                 case 1:
-                    answerContainer.innerHTML = `<input type="text" name="answer-${q.id}" placeholder="Введите ответ">`;
+
+                    clone = templates.input.cloneNode(true);
+                    clone.answer = question.answer.toLowerCase();
+
+                    clone.children[1].addEventListener('input', function (e) {
+                        clone.data = e.target.value.toLowerCase()
+                    });
+
                     break;
-                    
+
+
                 case 2:
-                    q.variants.forEach(variant => {
-                        answerContainer.innerHTML += `
-                            <label>
-                                <input type="radio" name="answer-${q.id}" value="${variant}">
-                                ${variant}
-                            </label><br>
-                        `;
-                    });
+
+                    clone = templates.radioBtnes.cloneNode(true);
+                    clone.answer = question.answer;
+
+                    variants = [...question.variantes.split(' '), question.answer]
+
+                    templates.radioBtn.children[0].name = `radioBtn-${question.id}`
+                    for (let variant of variants) {
+                        templates.radioBtn.children[0].value = variant;
+                        templates.radioBtn.children[2].textContent = variant;
+                        clone.children[1].append(templates.radioBtn.cloneNode(true));
+                    }
+
                     break;
-                    
+
                 case 3:
-                    // console.log(q.variants);
-            
-                    
-                    q.variants.forEach(variant => {
-                        answerContainer.innerHTML += `
-                            <label>
-                                <input type="checkbox" name="answer-${q.id}" value="${variant}">
-                                ${variant}
-                            </label><br>
-                        `;
-                    });
+
+                    clone = templates.checkBoxes.cloneNode(true)
+                    clone.answer = question.answer.split(' ');
+
+                    variants = [...question.variantes.split(' '), ...clone.answer]
+
+                    templates.checkBox.children[0].name = `checkBox-${question.id}`
+
+                    for (let variant of variants) {
+                        templates.checkBox.children[0].value = variant;
+                        templates.checkBox.children[2].textContent = variant;
+                        clone.children[1].append(templates.checkBox.cloneNode(true));
+                    }
+
+
+                    break;
+
+                default:
                     break;
             }
-            
-            list.appendChild(clone);
-        };
-    }
 
-    function checkAnswers() {
-        let correctCount = 0;
-        
-        questions.forEach(q => {
-            const userAnswer = getUserAnswer(q);
-            const isCorrect = checkAnswer(q, userAnswer);
-            
-            if (isCorrect) {
-                correctCount++;
-                markQuestionCorrect(q.id);
-            } else {
-                markQuestionIncorrect(q.id);
+            clone.children[0].textContent = question.ask;
+
+
+
+            list.append(clone);
+
+        })
+    })
+
+    .then(() => {
+
+        const checkBtn = $("check-answer");
+
+
+
+        checkBtn.addEventListener("click", () => {
+
+            let checks = document.querySelectorAll(".check");
+            let values = document.querySelectorAll('input:checked ');
+
+            values.forEach((el) => {
+                el.parentNode.parentNode.parentNode.data = undefined;
+            })
+
+            values.forEach((el) => {
+                let data = el.parentNode.parentNode.parentNode.data;
+
+                if (data == undefined) {
+                    el.parentNode.parentNode.parentNode.data = [el.value]
+                }
+                else {
+                    el.parentNode.parentNode.parentNode.data =
+                        [...data, el.value];
+                }
+
+            })
+
+            for (let check of checks) {
+
+                // console.log(check.answer, check.data);
+                if (check.data == null || check.data === "") {
+                    console.warn("Not good!");
+                    return;
+                }
+
             }
-        });
+
+
+            let counter = 0
+
+            checks.forEach((check) => {
+
+                if (check.answer == check.data) {
+                    counter += 1;
+                    check.children[0].style.color = "green";
+                }
+                else if (Array.isArray(check.answer) && check.answer.join(" ") == check.data.join(" ")) {
+                    counter += 1;
+                    check.children[0].style.color = "green";
+                }
+                else check.children[0].style.color = "red";
+                // console.log(check.answer, check.data, check.answer == check.data || check.answer.join(" ") == check.data.join(" "));
+            })
+
+
+            // results.forEach((result) => { result.classList.toggle("hidden") })
+
+            result.children[0].innerHTML = `<span>${counter}</span>/${checks.length}`
+            result.style.animationName = "show";
+            result.style.display = "flex"
+
+
+        })
+
+
+    });
+
+
+
+const counter = $("counter");
+function checkCounter() {
+
+    let checks = document.querySelectorAll(".check");
+    let count = 0;
+
+    checks.forEach((check) => {
+        if (check.data != undefined) count++;
         
-        resultDiv.innerHTML = `Правильных ответов: <b>${correctCount}</b> из ${questions.length}`;
-    }
-    
-    function getUserAnswer(q) {
-        switch(q.type) {
-            case 'yesno':
-            case 'radio':
-                const radio = document.querySelector(`input[name="answer-${q.id}"]:checked`);
-                return radio ? radio.value : null;
-                
-            case 'text':
-                const textInput = document.querySelector(`input[name="answer-${q.id}"]`);
-                return textInput ? textInput.value.toLowerCase().trim() : '';
-                
-            case 'checkbox':
-                const checkboxes = document.querySelectorAll(`input[name="answer-${q.id}"]:checked`);
-                return Array.from(checkboxes).map(cb => cb.value);
-        }
-    }
-    
-    function checkAnswer(q, userAnswer) {
-        if (!userAnswer) return false;
-        
-        switch(q.type) {
-            case 'yesno':
-            case 'text':
-            case 'radio':
-                return userAnswer.toLowerCase() === q.answer.toLowerCase();
-                
-            case 'checkbox':
-                if (userAnswer.length !== q.answer.length) return false;
-                return q.answer.every(ans => 
-                    userAnswer.some(ua => ua.toLowerCase() === ans.toLowerCase())
-                );
-        }
-    }
-    
-    function markQuestionCorrect(questionId) {
-        const questionElement = document.querySelector(`.question[data-id="${questionId}"]`);
-        if (questionElement) {
-            questionElement.classList.add('correct');
-            questionElement.classList.remove('incorrect');
-        }
-    }
-    
-    function markQuestionIncorrect(questionId) {
-        const questionElement = document.querySelector(`.question[data-id="${questionId}"]`);
-        if (questionElement) {
-            questionElement.classList.add('incorrect');
-            questionElement.classList.remove('correct');
-        }
-    }
+    })
 
-    fetchQuestions();
-    
-    submitBtn.addEventListener('click', checkAnswers);
-});
-//     function checkAnswers() {
-//         let correct = document.querySelectorAll(".correct").length;
-        
-//         resultDiv.innerHTML = `Правильных ответов: <b>${correct}</b> из ${questions.length}`;
-//     }
+    counter.textContent = `${count}/${checks.length}`
 
-//     fetchQuestions();
+}
 
-//     questions.forEach(q=>{
+setInterval(checkCounter, 100);
 
-//         template.children[0].children[0].textContent = q.title;
-//         template.children[0].children[1].textContent = q.decsription;
-
-//         let clone = template.cloneNode(true);
-//             })
-
-//     submitBtn.addEventListener('click', checkAnswers);
-
-// });     
-
-        // clone.children[1].children[1].addEventListener("click", () => {
-        //     if (clone.children[1].children[0].value.toLowerCase().trim() == q.answer.toLowerCase().trim()) {
-        //         inputAnswer.style.color = "green";
-        //         submitBtn.style.color = "green";
-        //     }
-        //     else
-        //     {
-        //         inputAnswer.style.color = "red";
-        //         submitBtn.style.color = "red";
-        //     }
-        // })
-
-  
 
 
