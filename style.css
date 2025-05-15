@@ -1,0 +1,351 @@
+:root {
+    --bg-color: #000000;
+    --header-bg: #28292e;
+    --nav-bg: #000000;
+    --card-bg: #1a1b1d;
+    --text-color: #e0e0e0;
+    --text-secondary: #a0a0a0;
+    --accent-blue: #4a71e0;
+    --border-color: #3a3b40;
+    --icon-color: #a0a0a0;
+    --logo-color: #e0e0e0;
+    --search-bg: #3a3b40;
+    --search-text-color: #e0e0e0;
+    --tag-bg: rgba(74, 113, 224, 0.1); 
+    --tag-color: #4a71e0;
+    --navbar-link-hover: #3a3b40;
+    --navbar-link-active: #4a71e0; 
+}
+
+body.light-theme {
+    --bg-color: #f0f2f5;
+    --header-bg: #ffffff;
+    --nav-bg: #f0f2f5;
+    --card-bg: #ffffff;
+    --text-color: #333;
+    --text-secondary: #555;
+    --accent-blue: #007bff;
+    --border-color: #ddd;
+    --icon-color: #555;
+    --logo-color: #333;
+    --search-bg: #f0f0f0;
+    --search-text-color: #333;
+    --tag-bg: #e0eaff; 
+    --tag-color: #0056b3;
+    --navbar-link-hover: #f0f0f0;
+    --navbar-link-active: #007bff;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    min-height: 100vh;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 0 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); 
+    gap: 20px;
+}
+
+.header {
+    background-color: var(--header-bg);
+    padding: 15px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.header-left, .header-right {
+    display: flex;
+    align-items: center;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    font-size: 1.2em;
+    font-weight: 700;
+    color: var(--logo-color);
+    margin-right: 30px;
+}
+
+.logo svg {
+     width: 30px;
+     height: auto;
+     margin-right: 8px;
+     fill: var(--accent-blue);
+     stroke: var(--accent-blue);
+}
+
+.search-bar {
+    background-color: var(--search-bg);
+    border-radius: 20px;
+    padding: 8px 15px;
+    display: flex;
+    align-items: center;
+    min-width: 1050px; 
+}
+
+.search-bar i {
+    color: var(--icon-color);
+    margin-right: 10px;
+}
+
+.search-bar input {
+    background: none;
+    border: none;
+    outline: none;
+    color: var(--search-text-color);
+    font-size: 1em;
+    width: 100%; 
+}
+
+.search-bar input::placeholder {
+    color: var(--text-secondary);
+}
+
+.header-right > *:not(:last-child) {
+    margin-right: 20px;
+}
+
+.notification-icon, .avatar-icon {
+    color: var(--icon-color);
+    font-size: 1.3em;
+    cursor: pointer;
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+}
+
+.user-info .avatar-icon {
+     font-size: 2em; 
+     margin-right: 10px;
+     color: var(--accent-blue); 
+}
+
+.user-info .user-name {
+    font-weight: 600;
+    font-size: 0.9em;
+}
+
+.user-info .user-role {
+    font-size: 0.8em;
+    color: var(--text-secondary);
+}
+
+.theme-toggle {
+    background: none;
+    border: none;
+    color: var(--icon-color);
+    font-size: 1.3em;
+    cursor: pointer;
+    padding: 5px; 
+    transition: color 0.3s ease;
+}
+
+.theme-toggle:hover {
+     color: var(--text-color);
+}
+
+.navbar {
+    background-color: var(--nav-bg);
+    padding: 10px 30px;
+    position: sticky;
+    top: 65px;
+    z-index: 900;
+}
+
+.navbar ul {
+    list-style: none;
+    display: flex;
+    gap: 30px;
+    padding-left: 30%;
+}
+
+.navbar a {
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-weight: 500;
+    padding: 8px 12px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.navbar a i {
+    margin-right: 8px;
+    font-size: 1.1em;
+}
+
+.navbar a:hover {
+    background-color: var(--navbar-link-hover);
+    color: var(--text-color);
+}
+
+.navbar a.active {
+     color: var(--navbar-link-active);
+}
+
+
+
+.card {
+    background-color: var(--card-bg);
+    border-radius: 8px;
+    padding: 0px;
+    display: flex;
+    justify-content: space-between; 
+    align-items: flex-start; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    position: relative; 
+     min-height: 180px; 
+     max-height: 180px;
+     transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card-content {
+    flex-grow: 1; 
+    margin-right: 15px; 
+}
+
+.card h3 {
+    font-size: 1.1em;
+    margin-bottom: 10px;
+    color: var(--text-color);
+    font-weight: 600;
+}
+
+.card .tag {
+    display: inline-block;
+    background-color: var(--tag-bg);
+    color: var(--tag-color);
+    padding: 4px 10px;
+    border-radius: 4px;
+    font-size: 0.8em;
+    margin-bottom: 10px;
+    font-weight: 500;
+}
+
+.card p {
+    font-size: 0.9em;
+    color: var(--text-secondary);
+    margin-bottom: 5px;
+}
+
+.card p:last-child {
+    margin-bottom: 0;
+}
+
+.card-illustration {
+     flex-shrink: 0; 
+     width: 100px; 
+     height: auto;
+     display: flex; 
+     align-items: center;
+     justify-content: center;
+}
+
+.card-illustration svg {
+     width: 100%; 
+     height: auto; 
+     max-height: 80px; 
+     display: block;
+}
+
+
+.card-illustration svg path,
+.card-illustration svg circle,
+.card-illustration svg rect {
+    stroke: var(--accent-blue);
+    fill: none; 
+}
+
+.card-illustration svg circle[fill="#4A71E0"],
+.card-illustration svg path[fill="#4A71E0"],
+.card-illustration svg rect[fill="#4A71E0"] {
+     fill: var(--accent-blue);
+     stroke: none; 
+}
+
+
+@media (max-width: 768px) {
+    .header {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 10px 20px;
+    }
+
+    .header-left {
+        width: 100%;
+        margin-bottom: 10px;
+        justify-content: space-between;
+    }
+
+     .header-right {
+         width: 100%;
+         justify-content: space-between;
+     }
+
+    .search-bar {
+         width: 100%;
+         margin-top: 10px;
+         min-width: auto;
+     }
+
+     .header-right > *:not(:last-child) {
+        margin-right: 15px;
+    }
+
+    .navbar {
+        padding: 10px 20px;
+        top: auto; 
+        position: static;
+    }
+
+    .navbar ul {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .container {
+        padding: 0 10px;
+        grid-template-columns: 1fr; 
+    }
+
+    .card {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .card-content {
+        margin-right: 0;
+        margin-bottom: 15px;
+         width: 100%; 
+    }
+
+     .card-illustration {
+         width: 80px; 
+         height: auto;
+     }
+}
