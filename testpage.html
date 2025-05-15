@@ -23,7 +23,7 @@
                     <span></span>
                 </label>
             </div>
-            <i class="fas fa-bell"></i>
+            <img class="bell-btn" src="./img/Icon.png">
             <img src="./img/Ellipse 198.png" alt="User Avatar" class="user-avatar">
             <div class="user-details">
                 <span class="user-name">Ben verber</span>
@@ -32,21 +32,51 @@
         </div>
     </header>  
     <main>
-                <div class="exit">
-            <img src="./img/Frame 1073714444.png" alt="Вернуться на главную">
-        </div>
-        <div>
-
+        <div class="exit">
+            <a href="./cards.html">
+                <img src="./img/Frame 1073714444.png" alt="Вернуться на главную">
+            </a>
             <div class="add-photo">
-                <div></div>
+                <div>
+                    <div class="photo-frame"></div>
+                </div>
             </div>
+            <div></div>
         </div>
         <div class="introduction-question">
             <p class="paragraph">Напишите название темы для теста</p>
-            <input type="text" placeholder="Введите название..."></input>
+            <input class="add-new-text" type="text" placeholder="Введите название..."></input>
+            <input class="add-new-text" type="text" placeholder="Введите вопрос..."></input>
+            <div class="add-remove-text">
+                <span></span>
+                <input placeholder="Введите вариант ответа" type="text">
+                <div>
+                    <img src="./img/ic_round-delete.png" alt="Удалить">
+                </div>
+            </div>
+            <div class="add-remove-text">
+                <span></span>
+                <input placeholder="Введите вариант ответа" type="text">
+                <div>
+                <img src="./img/ic_round-delete.png" alt="Удалить">
+                </div>
+            </div>
+            <div class="add-variant-answer">
+                <img class="remove-button" src="./img/ei_plus.png" alt="Добавить">
+                <p>Добавить вариант ответа</p>
+            </div>
+            <div class="add-new-question-btn">
+                <img src="./img/ei_plus.png" alt="Добавить">
+                <p>Добавить новый вопрос</p>
+            </div>
         </div>
-
-        <button id="check-answer">Сохранить</button>
+        <div class="saving-test">
+            <div></div>
+            <a href="./cards.html">
+                <button id="check-answer">Сохранить</button>
+            </a>
+            <div></div>
+        </div>
     </main>
     <script src="testpage.js" defer></script>
 </body>

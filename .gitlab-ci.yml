@@ -1,0 +1,32 @@
+stages:
+  - build
+  - deploy
+
+build-production:
+  stage: build
+  image: docker:20.10.16
+  services:
+    - docker:20.10.16-dind
+  variables:
+    VITE_BACKEND_URL: "https://demo.internship.api.visiflow-ai.ru"
+  before_script:
+    - echo "$CI_REGISTRY_PASSWORD" | docker login -u "$CI_REGISTRY_USER" --password-stdin "$CI_REGISTRY"
+  script:
+    - docker build --build-arg VITE_BACKEND_URL="$VITE_BACKEND_URL" --cache-from="$CI_REGISTRY_IMAGE:production-latest" -t "$CI_REGISTRY_IMAGE:production-$CI_COMMIT_SHA" -t "$CI_REGISTRY_IMAGE:production-latest" .
+    - docker push "$CI_REGISTRY_IMAGE:production-$CI_COMMIT_SHA"
+    - docker push "$CI_REGISTRY_IMAGE:production-latest"
+  only:
+    - main
+  tags:
+    - build
+
+deploy-production:
+  stage: deploy
+  script:
+    - /opt/internship/internship.sh demo/frontend
+  environment:
+    name: production
+  only:
+    - main
+  tags:
+    - deploy

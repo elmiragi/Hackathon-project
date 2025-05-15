@@ -33,6 +33,7 @@ body {
 }
 
 main {
+    margin: 0 200px;
     position: relative;
 }
 
@@ -70,11 +71,6 @@ main {
     display: flex;
     justify-content: center;
     align-items: center;
-}
-
-main {
-    margin: 0px 200px;
-
 }
 
 .quiz-progress{
@@ -324,6 +320,10 @@ main {
     justify-content: center;
     align-items: center;
 
+    position: relative;
+    top: 140px;
+    left: 10px;
+
     background-color: #14151A;
 
     animation-name: none;
@@ -419,4 +419,9 @@ main {
     font-weight: 300;
     /* padding:0 5px; */
     border: 1px dashed var(--grey-plate);
+}
+
+.bell-btn{
+    width: 20px;
+    height: 20px;
 }
