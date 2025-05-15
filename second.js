@@ -64,17 +64,6 @@ var questions = [];
         }
     }
 
-    // async function fetchQuestions() {
-    //     try {
-    //         const response = await fetch('https://team-3.internship.api.visiflow-ai.ru/questions');
-    //         if (!response.ok) throw new Error('Ошибка загрузки вопросов');
-    //         questions = await response.json().questions;
-    //         renderQuestions();
-    //     } catch (error) {
-    //         console.error('Error:', error);
-    //         template.textContent = 'Не удалось загрузить вопросы.';
-    //     }
-    // }
 
     function renderQuestions() {
         list.innerHTML = ''; 

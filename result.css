@@ -56,3 +56,14 @@ main {
     }
 
 }
+
+
+.congratulations h3{
+    padding-bottom: 40px;
+    background-color: #14151A;
+}
+
+.congratulations a{
+    background-color: #191C25;
+    padding: 10px;
+}

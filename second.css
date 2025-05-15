@@ -65,6 +65,11 @@ main{
 
 }
 
+.bell-img{
+    width: 25px;
+    height: 25px;
+}
+
 .header {
     background-color: var(--blue);
     padding: 15px 30px;
