@@ -1,0 +1,245 @@
+main {
+background-color: #14151A;
+}
+
+:root {
+    --bg-color-dark: #242731;
+    --sidebar-bg-dark: #2a2d3a;
+    --header-bg-dark: #2a2d3a;
+    --text-color-dark: #e0e0e0;
+    --quiz-title-color-dark: #e0e0e0;
+    --black: #1B1E24;
+    --grey: #3E3E3E;
+    --main-grey: #272B36;
+    --logo-color-light: #5e72e4;
+    --blue:#14151A;
+    --grey-plate:#191C25;
+}
+
+@font-face {
+  font-family: 'Terminator Cyr';
+  src: url("terminatorcyr_semi_expandedbold.ttf") format('truetype'),
+       url('terminatorcyr_semi_expandedbold.ttf') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+.header {
+    background-color: var(--blue);
+    padding: 15px 30px;
+    display: flex;
+    justify-content: space-between;
+    color:white;
+    align-items: center;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.search-box {
+    display: flex;
+    align-items: center;
+    background-color: var(--grey-plate);
+    border-radius: 9px;
+    padding: 8px 15px;
+    width: 600px;
+    border: 1px solid #3e3e3e;
+}
+
+.search-box img {
+    color: var(--text-color-light-dark);
+    margin-right: 10px;
+    width: 13px;
+    height: 13px;
+}
+
+.search-box input {
+    background: none;
+    border: none;
+    outline: none;
+    color: var(--search-text-dark);
+    font-size: 1em;
+    flex-shrink: 0;
+}
+
+.search-box input::placeholder {
+    color: var(--text-color-light-dark);
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+    color: var(--text-color-light-dark);
+}
+
+.user-info i {
+    margin-left: 20px;
+    cursor: pointer;
+}
+
+.user-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-left: 20px;
+    object-fit: cover;
+}
+
+.user-details {
+    display: flex;
+    flex-direction: column;
+    margin-left: 10px;
+    font-size: 0.9em;
+}
+
+.user-name {
+    font-weight: bold;
+    color: var(--text-color-dark);
+}
+
+.user-role {
+    color: var(--text-color-light-dark);
+}
+
+.large-letter{
+    font-size: 26px;
+}
+
+.logo{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.logo p{
+    font-family: 'Terminator Cyr', sans-serif;
+}
+
+.logo img{
+    width: 40px;
+    height: 40px;
+
+}
+
+.pages{
+    display: flex;
+    justify-content: center;
+    background-color: #15181F;
+    text-align: center;
+    border-radius: 8px;
+    padding: 10px;
+}
+
+.button-page{
+    padding: 8px;
+    background-color: var(--grey-plate);
+    border: none;
+    color: white;
+}
+
+.central-block{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.menu-button{
+    border-radius: 6px;
+}
+
+.menu-button-test {
+    display: flex;
+    justify-content: center;
+    border-radius: 6px;
+    background-color: #15181F;
+    margin: 0px 8px;
+}
+.menu-button-test img{
+    width: 20px;
+    height: 20px;
+    padding: 5px 0px 0px 5px;
+}
+
+#button-page-here{
+    background-color: var(--grey-plate);
+}
+
+.button-page:hover {
+    background-color: var(--grey-plate);
+}
+.button-page{
+    border-radius: 6px;
+    background-color: #15181F;
+}
+.menu-button-test:hover{
+    background-color: var(--grey-plate);
+}
+.cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 5px;
+}
+
+.card {
+    position: relative;
+
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: space-around;
+
+    background-color: #191C25;
+    border-radius: 15px;
+
+    width: 350px;
+    height: 200px;
+
+    padding: 31px 30px 8px 16px;
+
+    & h2,
+    h3,
+    h4 {
+
+        margin: 0;
+        color: white
+    }
+
+    & h2 {
+        font-size: 18px;
+    }
+
+    & h3 {
+        font-size: 14px;
+        background-color: #242834;
+        /* border: none; */
+        border-radius: 10px;
+        padding: 4px 10px;
+    }
+
+    & p {
+        margin: 0;
+        color: gray;
+    }
+
+    & img {
+        position: absolute;
+        right: 10px;
+        bottom: 24px;
+
+        width: 120px;
+        height: 120px;
+    }
+
+    & div {
+
+
+        display: flex;
+        gap: 5px;
+    }
+}
+
+.border {
+    border: 1px white solid;
+
+}

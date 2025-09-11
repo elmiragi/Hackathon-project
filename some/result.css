@@ -1,0 +1,58 @@
+main {
+    background-color: #14151A;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.congratulations {
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    background-color: #14151A;
+
+    animation-name: show;
+    animation-duration: 2s;
+
+    width: 300px;
+    height: 200px;
+
+    border-radius: 20px;
+
+    box-shadow: 16px -12px 100px 31px rgba(0, 64, 255, 1);
+
+    & h2 {
+        
+        font-size: 80px;
+    }
+
+    & h3, h2, a {
+        text-decoration: none;
+        margin: 0;
+        color: white;
+    }
+    & h2 {
+        color: gray;
+    }
+    
+    & span {
+        color: white;
+    }
+}
+
+
+@keyframes show {
+    from {
+        box-shadow: 0px 0px 1px -12px rgba(0, 64, 255, 1);
+    }
+
+    to {
+        box-shadow: 16px -12px 100px 31px rgba(0, 64, 255, 1);
+    }
+
+}
