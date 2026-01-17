@@ -1,12 +1,15 @@
 main {
     background-color: #14151A;
-
+    
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-top: 20%;
 }
 
-
+* {
+    background-color: #14151A;
+}
 .congratulations {
 
     display: flex;
@@ -55,4 +58,9 @@ main {
         box-shadow: 16px -12px 100px 31px rgba(0, 64, 255, 1);
     }
 
+}
+
+.congratulations a{
+    padding-top: 40px;
+    background-color: #191C25;
 }
